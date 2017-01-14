@@ -4,7 +4,8 @@ var About = React.createClass({
   render : function () {
     return (
       <div>
-        I am the About page
+        <h1>About</h1>
+        <p>About testing</p>  
       </div>
     );
   }
