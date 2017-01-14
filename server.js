@@ -5,6 +5,15 @@ const config = require('./config');
 
 var app = express();
 
+// Redirect traffic that uses http protocol
+// throughout https
+app.use((req, res, next) => {
+  if (req.headers['x-forwarded-proto'] === 'http') {
+    next();
+  } else {
+    res.redirect('http://' + req.hostname + req.url);
+  }
+});
 
 app.use(express.static(path.join(__dirname,'public')));
 
